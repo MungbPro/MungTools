@@ -1,51 +1,42 @@
-# Download & install Mung Tools
+# Install Mung Tools
 
 [简体中文](DOWNLOAD.zh-CN.md) · [Back to Mung Tools](../README.md) · [Mung on X](https://x.com/mungbpro)
 
 <img src="images/app-icon.png" alt="Mung Tools app icon" width="112">
 
-**Apple notarization is not complete. Current binary downloads can trigger a macOS security warning.**
+## Run one command
 
-| Check | Current status |
-| --- | --- |
-| Mac compatibility | Apple Silicon, macOS 14 or later |
-| Public app signature | Ad-hoc; not a Developer ID distribution signature |
-| Apple notarization | Not completed |
-| Recommended installation for now | Build from the published source below |
-
-A checksum, code signature, or passing build test does not establish that an app is malware-free. Apple’s notarization service scans submitted software and issues a ticket for Gatekeeper; see [Apple’s Developer ID guide](https://developer.apple.com/developer-id/).
-
-## Build from source
-
-This is the recommended route while notarization is unfinished. You need Apple’s Command Line Tools with Swift. Review the source before running it; a local build is not an Apple malware scan.
-
-**Using Codex on your Mac? Paste this:**
-
-```text
-Install Mung Tools from https://github.com/MungbPro/MungTools on this Mac. Read its source and installation instructions, build it locally, and open it. Preserve my existing configuration and running tools. Do not run my tool scripts or disable macOS security.
-```
-
-**Or run these commands yourself:**
+On an **Apple Silicon Mac with macOS 14 or later**, paste this into **Terminal**:
 
 ```sh
-git clone https://github.com/MungbPro/MungTools.git
-cd MungTools
-./install.sh
+/bin/bash -o pipefail -c 'curl -fsSL https://raw.githubusercontent.com/MungbPro/MungTools/main/install-from-source.sh | /bin/bash'
 ```
 
-The installer builds the app, places it in `~/Applications`, and opens it. You will see Mung Tools’ icon in the menu bar. Click it to open the tool list.
+[Review the installer before running it](../install-from-source.sh).
 
-You can also [download the source ZIP](https://github.com/MungbPro/MungTools/archive/refs/heads/main.zip), unzip it, and run `./install.sh` from that folder. See [build details](USAGE.md#development).
+The script downloads a checksum-pinned source archive from this project’s GitHub release, compiles the app on your Mac, and installs it in `~/Applications/Mung Tools.app`. It then opens the app; click its menu-bar icon to see your tools.
 
-## About the downloadable app
+**First time?** Apple’s Command Line Tools with Swift are required. If they are missing, the script opens Apple’s official installer and stops. Finish that installation, then run the same command again. Full Xcode, Python, Node.js, and an API key are not required.
 
-[Development preview v1.3.1 — NOT Apple-notarized](https://github.com/MungbPro/MungTools/releases/tag/v1.3.1).
+Your saved configuration and running tools stay in place. The installer does not execute your tool scripts or quit a running launcher. If Mung Tools is already open, its current session keeps running and the update takes effect at the next launch.
 
-This is a development pre-release, not a verified stable download. It includes the new app icon and DMG installer; Apple notarization is still pending.
+## Prefer Codex?
 
-Prebuilt downloads currently have the limitations listed above. A DMG or ZIP file alone does not change the notarization status. When a notarized download is available, this page will link to it directly.
+Paste this into Codex on your Mac:
 
-For a ZIP release, unzip it and move **Mung Tools.app** into **Applications**. For a DMG release, open the disk image and drag **Mung Tools.app** to **Applications**. Eject the disk image, then open the installed app. No Python, Node.js, or Xcode is needed to run a prebuilt app.
+```text
+Install Mung Tools from https://github.com/MungbPro/MungTools on this Mac. Read its installation guide and install-from-source.sh, then use the source installer. Preserve my existing configuration and running tools. Do not execute my tool scripts, quit a running launcher, or disable macOS security. If Apple Command Line Tools are missing, help me install them and continue afterward.
+```
+
+## Download source instead
+
+[Download the source ZIP](https://github.com/MungbPro/MungTools/archive/refs/heads/main.zip), unzip it, and run `./install.sh` from that folder after installing Apple’s Command Line Tools. See [build details](USAGE.md#development).
+
+## Why source installation?
+
+The earlier prebuilt app downloads are **not Apple-notarized** and macOS can block them. The installation route above builds an app locally from published source. It does not remove quarantine metadata or disable Gatekeeper, and it is not an Apple malware scan or notarization approval.
+
+A normal direct app download needs Developer ID signing and Apple notarization. That distribution option is not ready yet; changing the icon or packaging the same app in a DMG cannot provide it. See [Apple’s Developer ID guide](https://developer.apple.com/developer-id/).
 
 ## If macOS shows a warning
 

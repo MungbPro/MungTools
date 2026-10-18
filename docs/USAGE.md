@@ -4,7 +4,9 @@
 
 ## Install and macOS security
 
-Read the [download and installation guide](DOWNLOAD.md) first. Current public binaries are ad-hoc signed and **not Apple-notarized**; they may be blocked by macOS. Source build instructions are available there. Build tests and checksums are not malware scans. Building locally does not notarize the app.
+Use the one-command [source installer](DOWNLOAD.md). It downloads a checksum-pinned source archive, builds on your Mac, and installs to `~/Applications/Mung Tools.app`. It requires Apple Silicon, macOS 14+, and Apple’s Command Line Tools with Swift. If the tools are missing, it opens Apple’s official installer; finish that installation and rerun the command.
+
+Existing configuration and running tools are preserved. A running launcher stays open, so an update takes effect on its next launch. The installer does not execute your tool commands or change macOS security settings. Earlier prebuilt downloads are **not Apple-notarized** and may be blocked; they are not the normal installation route. Local builds, tests, and checksums do not provide Apple malware scanning or notarization.
 
 ## Import tools with Codex
 

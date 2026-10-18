@@ -1,51 +1,42 @@
-# 下载与安装熊梦白 AI 工具箱
+# 安装熊梦白 AI 工具箱
 
 [English](DOWNLOAD.md) · [返回项目介绍](../README.zh-CN.md) · [关注我-熊梦白](https://x.com/mungbpro)
 
 <img src="images/app-icon.png" alt="熊梦白 AI 工具箱应用图标" width="112">
 
-**Apple 公证尚未完成。当前应用下载包可能触发 macOS 安全提示。**
+## 运行一条命令
 
-| 检查项 | 当前状态 |
-| --- | --- |
-| Mac 兼容性 | Apple 芯片，macOS 14 或更新版本 |
-| 公开应用的签名 | 临时签名，非 Developer ID 分发签名 |
-| Apple 公证 | 尚未完成 |
-| 目前推荐的安装方式 | 按下方说明从公开源码构建 |
-
-校验和、代码签名、构建测试通过，都不能证明应用没有恶意软件。Apple 公证服务会扫描提交的软件，并为 Gatekeeper 签发公证票据，详见 [Apple Developer ID 说明](https://developer.apple.com/developer-id/)。
-
-## 从源码构建
-
-公证完成前，推荐使用此方式。需要包含 Swift 的 Apple 命令行工具。运行前请检查源码；本地构建也不等于 Apple 恶意软件扫描。
-
-**在 Mac 上用 Codex？复制这段话：**
-
-```text
-请在这台 Mac 安装 https://github.com/MungbPro/MungTools 的 Mung Tools。先阅读源码和安装说明，在本机构建并打开。保留已有配置及正在运行的工具，不要执行我的工具脚本，也不要关闭 macOS 安全保护。
-```
-
-**也可以自己运行：**
+在使用 **macOS 14 或更新版本的 Apple 芯片 Mac** 上，把下面这行粘贴到**终端**：
 
 ```sh
-git clone https://github.com/MungbPro/MungTools.git
-cd MungTools
-./install.sh
+/bin/bash -o pipefail -c 'curl -fsSL https://raw.githubusercontent.com/MungbPro/MungTools/main/install-from-source.sh | /bin/bash'
 ```
 
-安装脚本会构建应用，将它放入 `~/Applications` 并打开。你会在菜单栏看到工具箱图标，点击即可打开工具列表。
+[运行前可先查看安装脚本](../install-from-source.sh)。
 
-也可以[下载源码 ZIP](https://github.com/MungbPro/MungTools/archive/refs/heads/main.zip)，解压后在文件夹内运行 `./install.sh`。更多内容见[构建说明](USAGE.zh-CN.md#开发)。
+脚本会从本项目的 GitHub Release 下载固定校验和的源码包，在你的 Mac 上编译，并安装到 `~/Applications/Mung Tools.app`。随后打开应用；点击菜单栏图标即可看到工具列表。
 
-## 关于应用下载包
+**第一次安装？** 需要包含 Swift 的 Apple 命令行工具。若尚未安装，脚本会打开 Apple 官方安装程序并停止。安装完成后，再运行同一条命令即可。无需完整 Xcode、Python、Node.js 或 API Key。
 
-[开发预览版 v1.3.1 — 未通过 Apple 公证](https://github.com/MungbPro/MungTools/releases/tag/v1.3.1)。
+已有配置和正在运行的工具会保留。安装脚本不会执行你的工具脚本，也不会退出正在运行的工具箱。若工具箱已经打开，当前会话会继续运行，更新在下次打开时生效。
 
-这是开发预览版，并非经过验证的稳定下载版本。它包含新应用图标和 DMG 安装包；Apple 公证仍未完成。
+## 想让 Codex 帮你安装？
 
-目前的应用下载包仍有上表列出的限制。仅改为 DMG 或 ZIP 格式不会改变公证状态。完成公证后，本页会直接链接到已公证的下载包。
+把这段话粘贴到 Mac 上的 Codex：
 
-ZIP 版本：解压后，将 **Mung Tools.app** 放入**应用程序**。DMG 版本：打开磁盘映像，将 **Mung Tools.app** 拖入**应用程序**，推出磁盘映像，再打开已安装的应用。运行预构建版本无需 Python、Node.js 或 Xcode。
+```text
+请在这台 Mac 安装 https://github.com/MungbPro/MungTools 的 Mung Tools。先阅读安装说明和 install-from-source.sh，再使用源码安装脚本。保留已有配置及正在运行的工具，不要执行我的工具脚本、退出正在运行的工具箱或关闭 macOS 安全保护。若缺少 Apple 命令行工具，请帮我安装，并在完成后继续。
+```
+
+## 也可以下载源码
+
+[下载源码 ZIP](https://github.com/MungbPro/MungTools/archive/refs/heads/main.zip)，解压后，在已安装 Apple 命令行工具的情况下，从该文件夹运行 `./install.sh`。更多内容见[构建说明](USAGE.zh-CN.md#开发)。
+
+## 为什么使用源码安装？
+
+之前的预构建应用下载包**尚未通过 Apple 公证**，可能被 macOS 阻止打开。上面的安装方式会从公开源码在本机构建应用，不会移除隔离属性或关闭 Gatekeeper，也不代表 Apple 恶意软件扫描或公证通过。
+
+正常的直接下载应用需要 Developer ID 签名和 Apple 公证，这种分发方式目前尚未就绪。换图标或把同一个应用改成 DMG，都不能代替这些步骤。详见 [Apple Developer ID 说明](https://developer.apple.com/developer-id/)。
 
 ## macOS 提示是什么意思
 

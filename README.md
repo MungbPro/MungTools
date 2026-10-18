@@ -1,6 +1,12 @@
-[Download Mung Tools](docs/DOWNLOAD.md)
+[Install Mung Tools](docs/DOWNLOAD.md)
 
-> **macOS security status:** Current downloads are **not Apple-notarized**. Read the installation guide before downloading.
+```sh
+/bin/bash -o pipefail -c 'curl -fsSL https://raw.githubusercontent.com/MungbPro/MungTools/main/install-from-source.sh | /bin/bash'
+```
+
+Paste into **Terminal** to download the source, build it on your Mac, and install it in `~/Applications`. [Review the installer](install-from-source.sh) · [Download source instead](https://github.com/MungbPro/MungTools/archive/refs/heads/main.zip).
+
+Requires **Apple Silicon and macOS 14+**. If Apple’s Command Line Tools are missing, the script opens Apple’s installer; finish it, then run the command again. Direct app downloads await Apple notarization; this command builds locally and keeps macOS security settings enabled.
 
 # Mung Tools
 
@@ -33,7 +39,7 @@ Have a folder full of `Start.command` and `Stop.command` files? Give each tool a
   </tr>
 </table>
 
-[Download Mung Tools](docs/DOWNLOAD.md)
+[Install Mung Tools](docs/DOWNLOAD.md)
 
 ## Get your tools in with Codex
 
@@ -47,7 +53,7 @@ Codex needs access to the folders you choose. This uses your existing Codex setu
 
 **Manual setup:** click **New** to choose scripts yourself, or use **Import → Choose File** for an existing configuration. See the [usage guide](docs/USAGE.md).
 
-The downloaded app needs no Python, Node.js, or Xcode. Your tools may have their own requirements. Apple notarization is not complete; the [installation guide](docs/DOWNLOAD.md) explains the current status and macOS alerts.
+The installer needs Apple’s Command Line Tools with Swift; full Xcode, Python, and Node.js are not required. Your tools may have their own requirements. Existing configuration and running tools are preserved. If Mung Tools is already open, the update takes effect at its next launch. See the [installation guide](docs/DOWNLOAD.md).
 
 **A few useful keys:** `⌘F` search · `⌘P` pin · `⌘K` actions · `⌘N` new tool · `⌘H` hide window.
 
@@ -77,4 +83,4 @@ Have an idea or found a bug? [Open an issue](https://github.com/MungbPro/MungToo
 
 [More About Mung · @mungbpro on X](https://x.com/mungbpro) · [MIT license](LICENSE)
 
-[Download Mung Tools](docs/DOWNLOAD.md)
+[Install Mung Tools](docs/DOWNLOAD.md)

@@ -16,6 +16,7 @@ source_files=(
   "${swift_tests[@]}"
   build.sh
   install.sh
+  install-from-source.sh
   README.md
   README.zh-CN.md
   docs/DOWNLOAD.md
