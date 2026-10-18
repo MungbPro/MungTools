@@ -146,7 +146,7 @@ struct ManagerView: View {
             if !query.isEmpty {
                 Button { query = ""; focusSearch() } label: {
                     Image(systemName: "xmark.circle.fill").foregroundStyle(PaletteStyle.muted)
-                }.buttonStyle(.plain).help(tr("Clear search · Esc", "清空搜索 · Esc"))
+                }.buttonStyle(.plain).launcherPointer().help(tr("Clear search · Esc", "清空搜索 · Esc"))
             }
             languagePicker
             creatorBranding
@@ -214,7 +214,7 @@ struct ManagerView: View {
                 .padding(.leading, 11).padding(.trailing, 5).padding(.vertical, 11)
                 .frame(maxWidth: .infinity, alignment: .leading).contentShape(Rectangle())
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.plain).launcherPointer()
             .accessibilityLabel(item.name.isEmpty ? tr("Untitled Tool", "未命名工具") : item.name)
             .accessibilityHint(tr("Select tool. Press Return for \(primaryTitle(item)).", "选择工具。按回车键\(primaryTitle(item))。"))
             Button { togglePin(item) } label: {
@@ -223,7 +223,7 @@ struct ManagerView: View {
                     .foregroundStyle(item.isPinned ? Color.cyan : PaletteStyle.muted.opacity(0.7))
                     .frame(width: 30, height: 36).contentShape(Rectangle())
             }
-            .buttonStyle(.plain).padding(.trailing, 5)
+            .buttonStyle(.plain).launcherPointer().padding(.trailing, 5)
             .disabled(!isSaved(item.id) || manager.isQuitting)
             .help(isSaved(item.id) ? "\(item.isPinned ? tr("Unpin Tool", "取消置顶") : tr("Pin Tool", "置顶工具")) · ⌘P" : tr("Save the tool before pinning it", "保存工具后即可置顶"))
             .accessibilityLabel("\(item.isPinned ? tr("Unpin", "取消置顶") : tr("Pin", "置顶")) \(item.name.isEmpty ? tr("Untitled Tool", "未命名工具") : item.name)")
@@ -249,7 +249,7 @@ struct ManagerView: View {
             Text(query.isEmpty ? tr("Let Codex find and add your tools.", "让 Codex 帮你查找并添加工具。") : tr("Try another search or import a tool.", "试试其他关键词，或导入工具。"))
                 .font(.system(size: 12)).foregroundStyle(PaletteStyle.muted)
             Button(tr("Import Tools", "导入工具"), action: showImport)
-                .buttonStyle(.bordered).padding(.top, 4)
+                .buttonStyle(.bordered).launcherPointer().padding(.top, 4)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
@@ -290,7 +290,7 @@ struct ManagerView: View {
                 Button { editTool(item.id) } label: {
                     HStack { Image(systemName: "slider.horizontal.3"); Text(tr("Edit Tool", "编辑工具")); Spacer(); shortcut("⌘E") }
                         .font(.system(size: 12))
-                }.buttonStyle(.plain).foregroundStyle(PaletteStyle.muted).disabled(isBusy(item.id))
+                }.buttonStyle(.plain).launcherPointer().foregroundStyle(PaletteStyle.muted).disabled(isBusy(item.id))
             }.padding(22)
         }
     }
@@ -309,7 +309,7 @@ struct ManagerView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(canStart ? Color.green.opacity(0.3) : PaletteStyle.border))
             }
-            .buttonStyle(.plain).disabled(!canStart)
+            .buttonStyle(.plain).launcherPointer().disabled(!canStart)
             .help(isDirty(item) ? tr("Save your changes before starting the tool", "保存修改后即可启动工具") : tr("Run the tool's Start command", "执行工具的启动命令"))
             .accessibilityLabel(tr("Start \(item.name.isEmpty ? "Untitled Tool" : item.name)", "启动\(item.name.isEmpty ? "未命名工具" : item.name)"))
             Button { if canEndTool(item) { manager.stop(item.id) } } label: {
@@ -321,7 +321,7 @@ struct ManagerView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(canEnd ? Color.red.opacity(0.3) : PaletteStyle.border))
             }
-            .buttonStyle(.plain).disabled(!canEnd)
+            .buttonStyle(.plain).launcherPointer().disabled(!canEnd)
             .help(saved?.end.isEmpty ?? true ? tr("Stop the process started by Mung Tools", "停止由工具箱启动的进程") : tr("Run the tool's saved End command", "执行工具已保存的结束命令"))
             .accessibilityLabel(tr("End \(item.name.isEmpty ? "Untitled Tool" : item.name)", "结束\(item.name.isEmpty ? "未命名工具" : item.name)"))
         }
@@ -345,7 +345,7 @@ struct ManagerView: View {
             Button(action: showImport) {
                 Label(tr("Import", "导入"), systemImage: "square.and.arrow.down")
                     .font(.system(size: 11, weight: .medium))
-            }.buttonStyle(.plain).foregroundStyle(.cyan)
+            }.buttonStyle(.plain).launcherPointer().foregroundStyle(.cyan)
                 .disabled(manager.isQuitting).accessibilityIdentifier("import-tools")
             footerDivider
             Button(action: performPrimary) {
@@ -353,15 +353,15 @@ struct ManagerView: View {
                     Text(selectedTool.map(primaryTitle) ?? tr("Select a Tool", "选择工具")).font(.system(size: 11, weight: .medium))
                     shortcut("↵")
                 }
-            }.buttonStyle(.plain).disabled(selectedTool == nil || primaryDisabled)
+            }.buttonStyle(.plain).launcherPointer().disabled(selectedTool == nil || primaryDisabled)
             footerDivider
             Button(action: toggleActions) {
                 HStack(spacing: 7) { Text(tr("Actions", "操作")).font(.system(size: 11)); shortcut("⌘K") }
-            }.buttonStyle(.plain)
+            }.buttonStyle(.plain).launcherPointer()
             footerDivider
             Button(action: newTool) {
                 HStack(spacing: 7) { Text(tr("New", "新建")).font(.system(size: 11)); shortcut("⌘N") }
-            }.buttonStyle(.plain)
+            }.buttonStyle(.plain).launcherPointer()
         }.padding(.horizontal, 18).frame(height: 48)
     }
 
@@ -398,7 +398,7 @@ struct ManagerView: View {
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundStyle(Color.black).padding(.horizontal, 14).padding(.vertical, 10)
                                     .background(Color.cyan).clipShape(RoundedRectangle(cornerRadius: 8))
-                            }.buttonStyle(.plain)
+                            }.buttonStyle(.plain).launcherPointer()
                                 .disabled(manager.isQuitting).accessibilityIdentifier("copy-codex-prompt")
                             Text(tr("Use Codex with access to your local project folders.", "请在有权访问本地项目文件夹的 Codex 中使用。"))
                                 .font(.system(size: 11)).foregroundStyle(PaletteStyle.muted).fixedSize(horizontal: false, vertical: true)
@@ -417,11 +417,11 @@ struct ManagerView: View {
                         }
                         Spacer()
                         Button(tr("Choose File…", "选择文件…"), action: importTools)
-                            .buttonStyle(.bordered).disabled(manager.isQuitting).accessibilityIdentifier("choose-import-file")
+                            .buttonStyle(.bordered).launcherPointer().disabled(manager.isQuitting).accessibilityIdentifier("choose-import-file")
                     }.padding(20).background(Color.white.opacity(0.025)).clipShape(RoundedRectangle(cornerRadius: 12))
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(PaletteStyle.border))
                     Button(tr("Or add a tool manually", "也可以手动新建工具"), action: newTool)
-                        .font(.system(size: 11)).buttonStyle(.plain).foregroundStyle(PaletteStyle.muted)
+                        .font(.system(size: 11)).buttonStyle(.plain).launcherPointer().foregroundStyle(PaletteStyle.muted)
                 }.padding(26)
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
             separator
@@ -429,7 +429,7 @@ struct ManagerView: View {
                 Label(tr("Nothing runs until you press Start.", "点击启动之前，不会执行任何命令。"), systemImage: "checkmark.shield")
                     .foregroundStyle(PaletteStyle.muted)
                 Spacer()
-                Button(action: backToPalette) { HStack { Text(tr("Back", "返回")); shortcut("Esc") } }.buttonStyle(.plain)
+                Button(action: backToPalette) { HStack { Text(tr("Back", "返回")); shortcut("Esc") } }.buttonStyle(.plain).launcherPointer()
             }.font(.system(size: 11)).padding(.horizontal, 22).frame(height: 48)
         }
     }
@@ -466,7 +466,7 @@ struct ManagerView: View {
                         HStack(spacing: 8) {
                             paletteTextField(tr("Defaults to your home folder", "默认为个人文件夹"), text: itemBinding.workingDirectory, monospaced: true)
                             Button { chooseDirectory(for: itemBinding) } label: { Image(systemName: "folder") }
-                                .buttonStyle(.bordered).help(tr("Choose working directory", "选择工作目录"))
+                                .buttonStyle(.bordered).launcherPointer().help(tr("Choose working directory", "选择工作目录"))
                         }
                     }
                     formField(tr("Website", "网页")) {
@@ -482,13 +482,13 @@ struct ManagerView: View {
             separator
             HStack {
                 Button(action: backToPalette) { HStack(spacing: 7) { Text(tr("Back", "返回")); shortcut("Esc") } }
-                    .buttonStyle(.plain).foregroundStyle(PaletteStyle.muted)
+                    .buttonStyle(.plain).launcherPointer().foregroundStyle(PaletteStyle.muted)
                 Spacer()
                 if isDirty(item) { Text(tr("Unsaved draft", "未保存的草稿")).font(.system(size: 11)).foregroundStyle(PaletteStyle.muted) }
                 Button { saveAndReturn(item) } label: {
                     HStack(spacing: 8) { Text(isSaved(id) ? tr("Save Changes", "保存修改") : tr("Create Tool", "创建工具")); shortcut("⌘↵") }
                         .font(.system(size: 12, weight: .medium))
-                }.buttonStyle(.borderedProminent).tint(Color.white.opacity(0.16)).disabled(busy || manager.isQuitting)
+                }.buttonStyle(.borderedProminent).launcherPointer().tint(Color.white.opacity(0.16)).disabled(busy || manager.isQuitting)
             }.font(.system(size: 11)).padding(.horizontal, 22).frame(height: 52)
         } else { missingToolPage }
     }
@@ -509,9 +509,9 @@ struct ManagerView: View {
                     Text(tr("Last 64 KB · refreshes every second", "最近 64 KB · 每秒刷新"))
                 }.font(.system(size: 11)).foregroundStyle(PaletteStyle.muted)
                 Spacer()
-                Button(tr("Reveal Log File", "在访达中显示日志")) { revealLog(id) }.buttonStyle(.plain)
+                Button(tr("Reveal Log File", "在访达中显示日志")) { revealLog(id) }.buttonStyle(.plain).launcherPointer()
                 footerDivider
-                Button(action: backToPalette) { HStack { Text(tr("Back", "返回")); shortcut("Esc") } }.buttonStyle(.plain)
+                Button(action: backToPalette) { HStack { Text(tr("Back", "返回")); shortcut("Esc") } }.buttonStyle(.plain).launcherPointer()
             }.font(.system(size: 11)).padding(.horizontal, 22).frame(height: 48)
         }
     }
@@ -520,6 +520,7 @@ struct ManagerView: View {
         VStack(spacing: 16) {
             Text(tr("This tool is no longer available.", "此工具已不存在。")).foregroundStyle(PaletteStyle.muted)
             Button(tr("Back to Tools", "返回工具列表"), action: backToPalette)
+                .launcherPointer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
@@ -529,7 +530,7 @@ struct ManagerView: View {
                 Image(systemName: "chevron.left").font(.system(size: 13, weight: .semibold))
                     .frame(width: 30, height: 30).background(Color.white.opacity(0.06))
                     .clipShape(RoundedRectangle(cornerRadius: 7))
-            }.buttonStyle(.plain).help(tr("Back to tools · Esc", "返回工具列表 · Esc"))
+            }.buttonStyle(.plain).launcherPointer().help(tr("Back to tools · Esc", "返回工具列表 · Esc"))
             sectionLabel(subtitle)
             Image(systemName: "chevron.right").font(.system(size: 9)).foregroundStyle(PaletteStyle.muted.opacity(0.6))
             Text(title).font(.system(size: 15, weight: .medium)).lineLimit(1)
@@ -559,7 +560,7 @@ struct ManagerView: View {
                 .foregroundStyle(PaletteStyle.muted)
                 .frame(width: 28, height: 30)
         }
-        .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize()
+        .menuStyle(.borderlessButton).menuIndicator(.hidden).fixedSize().launcherPointer()
         .help(tr("Language", "语言"))
         .accessibilityLabel(tr("Change language", "切换语言"))
         .accessibilityIdentifier("language-picker")
@@ -590,7 +591,7 @@ struct ManagerView: View {
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(Color.cyan.opacity(0.95))
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.plain).launcherPointer()
             .disabled(creatorProfileURL == nil)
             .help(creatorProfileURL == nil
                   ? tr("Creator's X profile will be added soon", "即将添加作者的 X 主页")
@@ -610,7 +611,7 @@ struct ManagerView: View {
                 .background(Color.white.opacity(0.06))
                 .clipShape(RoundedRectangle(cornerRadius: 7))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.plain).launcherPointer()
         .help(tr("Close Window · ⌘H", "关闭窗口 · ⌘H"))
         .accessibilityLabel(tr("Close Window", "关闭窗口"))
         .accessibilityHint(tr("Hide this window and keep tools running. Click the menu bar icon to reopen.", "隐藏窗口，工具继续运行。点击菜单栏图标可重新打开。"))
@@ -669,7 +670,7 @@ struct ManagerView: View {
             .padding(.horizontal, 9).frame(height: 32)
             .background(actionIndex == index ? Color.white.opacity(0.08) : Color.clear)
             .clipShape(RoundedRectangle(cornerRadius: 6)).contentShape(Rectangle())
-        }.buttonStyle(.plain).disabled(!action.enabled)
+        }.buttonStyle(.plain).launcherPointer().disabled(!action.enabled)
             .onHover { if $0 && action.enabled { actionIndex = index } }
     }
 
@@ -1029,7 +1030,7 @@ private struct LauncherCommandField: View {
                 Picker(tr("Command type", "命令类型"), selection: $command.kind) {
                     Text(tr("Script File", "脚本文件")).tag(CommandKind.script)
                     Text(tr("Shell Command", "Shell 命令")).tag(CommandKind.shell)
-                }.pickerStyle(.segmented).labelsHidden().frame(width: 240)
+                }.pickerStyle(.segmented).labelsHidden().frame(width: 240).launcherPointer()
                 if command.kind == .script { scriptField }
                 else { shellField }
                 Text(subtitle).font(.system(size: 11)).foregroundStyle(PaletteStyle.muted)
@@ -1042,11 +1043,11 @@ private struct LauncherCommandField: View {
                 .textFieldStyle(.plain).font(.system(size: 11, design: .monospaced))
                 .padding(10).background(Color.white.opacity(0.04)).clipShape(RoundedRectangle(cornerRadius: 7))
                 .overlay(RoundedRectangle(cornerRadius: 7).stroke(PaletteStyle.border))
-            Button(tr("Browse…", "浏览…"), action: chooseScript).buttonStyle(.bordered)
+            Button(tr("Browse…", "浏览…"), action: chooseScript).buttonStyle(.bordered).launcherPointer()
             if !command.isEmpty {
                 Button {
                     NSWorkspace.shared.activateFileViewerSelecting([launcherScriptURL(command.value, workingDirectory: workingDirectory)])
-                } label: { Image(systemName: "folder") }.buttonStyle(.bordered).help(tr("Reveal script in Finder", "在访达中显示脚本"))
+                } label: { Image(systemName: "folder") }.buttonStyle(.bordered).launcherPointer().help(tr("Reveal script in Finder", "在访达中显示脚本"))
             }
         }
     }

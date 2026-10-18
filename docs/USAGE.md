@@ -2,6 +2,10 @@
 
 [README](../README.md) · [简体中文](USAGE.zh-CN.md) · [Mung on X](https://x.com/mungbpro)
 
+## Install and macOS security
+
+Read the [download and installation guide](DOWNLOAD.md) first. Current public binaries are ad-hoc signed and **not Apple-notarized**; they may be blocked by macOS. Source build instructions are available there. Build tests and checksums are not malware scans. Building locally does not notarize the app.
+
 ## Import tools with Codex
 
 Choose **Import → Copy Codex Prompt**, paste into Codex on your Mac, and specify the folders it may inspect. Review its Start/End pairs before importing. Codex creates a UTF-8 `.mungtools` configuration and opens it with Mung Tools. You can also choose **Import → Choose File** manually.
@@ -102,13 +106,15 @@ Self-tests use temporary fake tools; they do not start or stop your configured t
 "dist/Mung Tools.app/Contents/MacOS/MungTools" --data-dir /tmp/mung-tools-demo
 ```
 
-To prepare release downloads:
+To build local release candidates:
 
 ```sh
 ./package-release.sh
 ```
 
-This builds the app and creates `MungTools-macOS-arm64.zip`, `MungTools-source.zip`, and `SHA256SUMS` in `dist/releases/`. The app download contains **Mung Tools.app**; it does not include your configuration or scripts.
+This builds the app and creates `MungTools-macOS-arm64.dmg`, `MungTools-macOS-arm64.zip`, `MungTools-source.zip`, `SHA256SUMS`, and `RELEASE-STATUS.plist` in `dist/releases/`. The app packages contain **Mung Tools.app**, without your configuration or scripts.
+
+These are unnotarized development packages; `publicReleaseReady` is `false`. This project’s verified public release workflow requires Developer ID signing, accepted notarization, and Gatekeeper verification. See the [notarization workflow](NOTARIZATION.md). Checksums and passing tests do not replace those checks.
 
 To prepare only a source archive:
 

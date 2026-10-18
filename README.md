@@ -1,4 +1,6 @@
-[Download Mung Tools](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[Download Mung Tools](docs/DOWNLOAD.md)
+
+> **macOS security status:** Current downloads are **not Apple-notarized**. Read the installation guide before downloading.
 
 # Mung Tools
 
@@ -31,11 +33,11 @@ Have a folder full of `Start.command` and `Stop.command` files? Give each tool a
   </tr>
 </table>
 
-[Download Mung Tools](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[Download Mung Tools](docs/DOWNLOAD.md)
 
 ## Get your tools in with Codex
 
-1. Unzip the download, move **Mung Tools.app** to **Applications**, and open it.
+1. Follow the [download and installation guide](docs/DOWNLOAD.md), then open Mung Tools.
 2. Click **Import → Copy Codex Prompt**. Paste into Codex on your Mac and tell it which folders it may inspect.
 3. Review the tools Codex pairs. It creates and opens an import file; your tools appear in Mung Tools. Click **Start** when ready.
 
@@ -45,7 +47,7 @@ Codex needs access to the folders you choose. This uses your existing Codex setu
 
 **Manual setup:** click **New** to choose scripts yourself, or use **Import → Choose File** for an existing configuration. See the [usage guide](docs/USAGE.md).
 
-The downloaded app needs no Python, Node.js, or Xcode. Your tools may have their own requirements. This release is ad-hoc signed and is not notarized; if macOS blocks opening it, see [Apple’s guide](https://support.apple.com/en-us/102445).
+The downloaded app needs no Python, Node.js, or Xcode. Your tools may have their own requirements. Apple notarization is not complete; the [installation guide](docs/DOWNLOAD.md) explains the current status and macOS alerts.
 
 **A few useful keys:** `⌘F` search · `⌘P` pin · `⌘K` actions · `⌘N` new tool · `⌘H` hide window.
 
@@ -75,4 +77,4 @@ Have an idea or found a bug? [Open an issue](https://github.com/MungbPro/MungToo
 
 [More About Mung · @mungbpro on X](https://x.com/mungbpro) · [MIT license](LICENSE)
 
-[Download Mung Tools](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[Download Mung Tools](docs/DOWNLOAD.md)

@@ -1,4 +1,6 @@
-[下载我这个工具](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[下载我这个工具](docs/DOWNLOAD.zh-CN.md)
+
+> **macOS 安全状态：**当前下载版本**尚未通过 Apple 公证**。下载前请先看安装说明。
 
 # 熊梦白 AI 工具箱
 
@@ -31,11 +33,11 @@
   </tr>
 </table>
 
-[下载我这个工具](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[下载我这个工具](docs/DOWNLOAD.zh-CN.md)
 
 ## 让 Codex 帮你导入工具
 
-1. 解压下载的文件，将 **Mung Tools.app** 放入**应用程序**，然后打开。
+1. 按照[下载与安装说明](docs/DOWNLOAD.zh-CN.md)完成安装，然后打开工具箱。
 2. 点击**导入 → 复制 Codex 提示词**，粘贴到 Mac 上的 Codex，并告诉它可以查看哪些文件夹。
 3. 核对 Codex 配对的工具。它会生成并打开导入文件，工具就出现在工具箱里了。需要时再点击**启动**。
 
@@ -45,7 +47,7 @@ Codex 需要访问你选定的文件夹。此流程使用你已有的 Codex，�
 
 **手动添加：**点击**新建**自己选择脚本，或通过**导入 → 选择文件**导入已有配置。详见[使用说明](docs/USAGE.zh-CN.md)。
 
-下载版工具箱无需 Python、Node.js 或 Xcode；你启动的工具可能有自己的运行要求。此版本使用临时签名，尚未经 Apple 公证；如果 macOS 阻止打开，请参阅 [Apple 官方说明](https://support.apple.com/en-us/102445)。
+下载版工具箱无需 Python、Node.js 或 Xcode；你启动的工具可能有自己的运行要求。Apple 公证尚未完成；[安装说明](docs/DOWNLOAD.zh-CN.md)会解释当前状态和 macOS 提示。
 
 **几个顺手的快捷键：** `⌘F` 搜索 · `⌘P` 置顶 · `⌘K` 操作 · `⌘N` 新建 · `⌘H` 隐藏窗口。
 
@@ -75,4 +77,4 @@ cd MungTools
 
 [关注我-熊梦白 · X：@mungbpro](https://x.com/mungbpro) · [MIT 许可证](LICENSE)
 
-[下载我这个工具](https://github.com/MungbPro/MungTools/releases/latest/download/MungTools-macOS-arm64.zip)
+[下载我这个工具](docs/DOWNLOAD.zh-CN.md)

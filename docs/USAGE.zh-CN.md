@@ -2,6 +2,10 @@
 
 [项目介绍](../README.zh-CN.md) · [English](USAGE.md) · [关注我-熊梦白](https://x.com/mungbpro)
 
+## 安装与 macOS 安全提示
+
+请先阅读[下载与安装说明](DOWNLOAD.zh-CN.md)。当前公开应用使用临时签名，**尚未通过 Apple 公证**，可能被 macOS 阻止打开。说明中提供了源码构建方法。构建测试与校验和不是恶意软件扫描，本地构建也不等于 Apple 公证通过。
+
 ## 用 Codex 导入工具
 
 点击**导入 → 复制 Codex 提示词**，粘贴到 Mac 上的 Codex，并指定它可以查看的文件夹。导入前，核对它配对的启动和结束脚本。Codex 会生成 UTF-8 编码的 `.mungtools` 配置文件，再用工具箱打开。也可以通过**导入 → 选择文件**手动导入。
@@ -102,13 +106,15 @@ Shell 命令通过 `/bin/zsh -lc` 执行。使用绝对路径，或相对于工�
 "dist/Mung Tools.app/Contents/MacOS/MungTools" --data-dir /tmp/mung-tools-demo
 ```
 
-打包发布文件：
+构建本地候选发布包：
 
 ```sh
 ./package-release.sh
 ```
 
-脚本会构建应用，并在 `dist/releases/` 生成 `MungTools-macOS-arm64.zip`、`MungTools-source.zip` 和 `SHA256SUMS`。应用下载包包含 **Mung Tools.app**，不包含你的配置或脚本。
+脚本会构建应用，并在 `dist/releases/` 生成 `MungTools-macOS-arm64.dmg`、`MungTools-macOS-arm64.zip`、`MungTools-source.zip`、`SHA256SUMS` 和 `RELEASE-STATUS.plist`。应用包包含 **Mung Tools.app**，不包含你的配置或脚本。
+
+这些是未公证的开发包，`publicReleaseReady` 为 `false`。本项目的公开发布验证流程要求完成 Developer ID 签名、Apple 公证和 Gatekeeper 验证，详见[公证流程](NOTARIZATION.md)。校验和与测试通过不能代替这些检查。
 
 仅打包源码：
 

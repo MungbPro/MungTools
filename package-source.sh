@@ -18,12 +18,20 @@ source_files=(
   install.sh
   README.md
   README.zh-CN.md
+  docs/DOWNLOAD.md
+  docs/DOWNLOAD.zh-CN.md
   LICENSE
   .gitignore
   package-source.sh
   package-release.sh
+  notarize-release.sh
+  Assets/MungTools.svg
+  Assets/MungTools.icns
+  scripts/generate-icon.swift
   .github/workflows/build.yml
   docs/CODEX-IMPORT.md
+  docs/NOTARIZATION.md
+  docs/images/app-icon.png
   docs/images/launcher-en.jpg
   docs/images/launcher-zh-CN.jpg
   docs/images/import-en.jpg
