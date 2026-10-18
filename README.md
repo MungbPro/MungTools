@@ -1,5 +1,7 @@
 [Install Mung Tools](docs/DOWNLOAD.md)
 
+**Free, open source, and open to security review.** [Read the app code](Sources), [review the installer](install-from-source.sh), and [check the MIT license](LICENSE) before installing.
+
 ```sh
 /bin/bash -o pipefail -c 'curl -fsSL https://raw.githubusercontent.com/MungbPro/MungTools/main/install-from-source.sh | /bin/bash'
 ```

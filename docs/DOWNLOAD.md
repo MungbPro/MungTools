@@ -4,6 +4,8 @@
 
 <img src="images/app-icon.png" alt="Mung Tools app icon" width="112">
 
+**Open source. Review it before you run it.** The [app code](../Sources), [installer](../install-from-source.sh), and [MIT license](../LICENSE) are public. The installer checks the source archive against a fixed SHA-256 checksum, builds the app on your Mac, and keeps macOS security protections enabled.
+
 ## Run one command
 
 On an **Apple Silicon Mac with macOS 14 or later**, paste this into **Terminal**:

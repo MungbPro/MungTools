@@ -1,5 +1,7 @@
 [安装熊梦白 AI 工具箱](docs/DOWNLOAD.zh-CN.md)
 
+**免费开源，代码透明，安全性可审查。** 安装前可以[查看完整应用源码](Sources)、[检查安装脚本](install-from-source.sh)与[阅读 MIT 许可证](LICENSE)。
+
 ```sh
 /bin/bash -o pipefail -c 'curl -fsSL https://raw.githubusercontent.com/MungbPro/MungTools/main/install-from-source.sh | /bin/bash'
 ```

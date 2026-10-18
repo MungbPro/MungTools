@@ -4,6 +4,8 @@
 
 <img src="images/app-icon.png" alt="熊梦白 AI 工具箱应用图标" width="112">
 
+**开源透明，安全性可审查。** [完整应用源码](../Sources)、[安装脚本](../install-from-source.sh)和 [MIT 许可证](../LICENSE)均公开可查。安装器会按固定 SHA-256 校验源码包，在你的 Mac 上构建应用，并保留 macOS 安全保护。
+
 ## 运行一条命令
 
 在使用 **macOS 14 或更新版本的 Apple 芯片 Mac** 上，把下面这行粘贴到**终端**：
