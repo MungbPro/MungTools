@@ -1,0 +1,15 @@
+.build/
+dist/
+# Machine-specific launch wrappers and private runtime data are not source releases.
+ManagedScripts/
+data/
+logs/
+models/
+recordings/
+tools.json
+tools.corrupt-*.json
+*.log
+.DS_Store
+*.swiftdoc
+*.swiftmodule
+*.swiftsourceinfo
